@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "birdy"
+version = "0.1.0"
+description = "Tiny audio processor and classifier focused on bird species identification"
+authors = ["Victor <vfornasieropaiva@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "0.14.8"
+pytest = "7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    "ruff_cache",
+    "git-rewrite",
+    "__pypackages__",
+]
+
+line-length = 88
+indent-width = 4
+
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

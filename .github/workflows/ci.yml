@@ -13,19 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Poetry
+        run: pipx install poetry==2.2.1
+
       - name: Set up Python Environment
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "poetry"
 
       - name: Install dependencies
         run: |
-          pip install ruff
+          poetry install --no-interaction --no-root
 
       - name: Run Linter
         run: |
-          ruff check --output-format=github .
+          poetry run ruff check --output-format=github .
 
       - name: Run Formatter
         run: |
-          ruff format --check .
+          poetry run ruff format --check .
