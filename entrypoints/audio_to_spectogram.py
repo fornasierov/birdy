@@ -2,6 +2,7 @@ import torch
 from birdy.loader.audio import load_audio
 from birdy.processor.audio import AudioToMel
 from birdy.helper.device import get_best_device
+from matplotlib import pyplot as plt
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
     HOP_LENGTH = 512
     N_MELS = 128
     TOP_DB = 80
-    FILE_PATH = ""
+    FILE_PATH = "/home/vpaiva/Documents/Code/python/birdy/data/dummy.wav"
     DEVICE = get_best_device()
 
     # 1. Setup AudioToMel
@@ -27,6 +28,9 @@ def main():
 
     # 3. Process audio
     mel_spectogram = audio_processor(audio_tensor)
+
+    # 4. Create image from tensor
+    plt.imshow(audio_processor.mel_to_image(mel_spectogram))
 
 
 if __name__ == "__main__":
