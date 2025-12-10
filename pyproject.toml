@@ -5,12 +5,24 @@ description = "Tiny audio processor and classifier focused on bird species ident
 authors = ["Victor <vfornasieropaiva@gmail.com>"]
 readme = "README.md"
 
+[[tool.poetry.source]]
+name = "pytorch-xpu"
+url = "https://download.pytorch.org/whl/xpu"
+priority = "explicit"
+
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12, <3.15"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.14.8"
 pytest = "7.4.0"
+torchcodec = "0.9.0"
+matplotlib = "3.10.7"
+# Pointing to specific XPU source because Im using Intel Graphics
+torch = { version = "2.9.1+xpu", source = "pytorch-xpu" }
+torchvision = { version = "0.24.1+xpu", source = "pytorch-xpu" }
+torchaudio = { version = "2.9.1+xpu", source = "pytorch-xpu" }
+pytorch-triton-xpu = { version = "3.5.0", source = "pytorch-xpu" }
 
 [build-system]
 requires = ["poetry-core"]
